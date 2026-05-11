@@ -5,6 +5,7 @@ use App\Http\Controllers\ImportController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CentroController;
 use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\CalificacionController;
 
 Route::get('/', [DashboardController::class, 'index'])->name('home');
 
@@ -21,6 +22,7 @@ Route::get('/centros/{id}', [CentroController::class, 'show'])->name('centros.sh
 Route::get('/alumnos', [AlumnoController::class, 'index'])->name('alumnos.index');
 Route::get('/alumnos/{id}/edit', [AlumnoController::class, 'edit'])->name('alumnos.edit');
 Route::post('/alumnos/{id}', [AlumnoController::class, 'update'])->name('alumnos.update');
-Route::get('/calificaciones', function () {
-    return 'Modulo Calificaciones'; })->name('calificaciones.index');
+Route::get('/calificaciones', [CalificacionController::class, 'index'])->name('calificaciones.index');
+Route::get('/calificaciones/{id}', [CalificacionController::class, 'show'])->name('calificaciones.show');
+Route::post('/calificaciones/{id}', [CalificacionController::class, 'store'])->name('calificaciones.store');
 
