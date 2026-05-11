@@ -3,7 +3,7 @@
         <div class="page-title">Captura de Calificaciones</div>
         <div class="page-subtitle">Selecciona a un alumno para capturar sus evaluaciones por materia.</div>
     </div>
-    <div style="display: flex; gap: 1rem; align-items: center;">
+    <div class="filters-container">
         <select id="filter-centro" onchange="applyCalificacionFilters()" style="max-width: 250px; padding: 0.4rem 2rem 0.4rem 1rem; border: 1px solid var(--gray-200); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 13px; color: var(--blue-900); background-color: var(--white); cursor: pointer; outline: none; text-overflow: ellipsis;">
             <option value="">Todos los planteles</option>
             @foreach($listaCentros as $centro)
@@ -16,7 +16,7 @@
 </div>
 
 <div class="card">
-    <div class="table-container">
+    <div class="table-responsive">
         <table class="data-table">
             <thead>
                 <tr>

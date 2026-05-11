@@ -4,7 +4,7 @@
         <div class="page-subtitle">{{ $alumno->paterno }} {{ $alumno->materno }} {{ $alumno->nombre }} | Matrícula: {{ $alumno->matricula }}</div>
     </div>
     
-    <div style="display: flex; gap: 0.5rem;">
+    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
         <button onclick="loadTab(window.currentModuleSearchUrl || '{{ route('calificaciones.index') }}')" class="btn" style="background: white; border: 1px solid var(--gray-200); color: var(--gray-700); padding: 0.5rem 1rem; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; cursor: pointer;">
             Cancelar
         </button>
@@ -18,7 +18,7 @@
 <div id="form-alert" style="display: none; padding: 1rem; border-radius: var(--radius-sm); margin-bottom: 1.5rem; font-size: 14px; font-weight: 500;"></div>
 
 <div class="card">
-    <div class="table-container">
+    <div class="table-responsive">
         <table class="data-table" id="grades-table">
             <thead>
                 <tr>

@@ -266,7 +266,12 @@ body {
 .card-search input::placeholder { color: var(--gray-400); }
 .card-actions { margin-left: auto; display: flex; gap: 8px; }
 
-table { width: 100%; border-collapse: collapse; }
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+table { width: 100%; border-collapse: collapse; min-width: 600px; }
 thead th {
   font-size: 11px; font-weight: 600;
   color: var(--gray-400); text-transform: uppercase; letter-spacing: .06em;
@@ -356,9 +361,16 @@ tbody td {
   .sidebar.open { transform: translateX(0); }
   .main { padding: 1rem; }
   .header-logo { width: auto; }
-  .header-search { display: none; }
+  .header-right { display: none; }
+  .header-search { display: flex; flex: 1; margin: 0 10px; max-width: none; }
   .mobile-toggle { display: block; }
   .stat-row { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; gap: 1rem; }
   .tabs { flex-wrap: wrap; }
+  .filters-container { flex-direction: column; align-items: stretch !important; gap: 0.5rem; width: 100%; margin-top: 1rem; }
+  .filters-container select { width: 100% !important; max-width: none !important; margin-left: 0 !important; }
+}
+
+.filters-container {
+  display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;
 }

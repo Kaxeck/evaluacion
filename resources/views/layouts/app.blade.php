@@ -46,7 +46,7 @@
         <!-- SIDEBAR -->
         <nav class="sidebar">
             <div class="nav-section-label">Principal</div>
-            <a class="nav-item" id="nav-inicio" onclick="loadTab('{{ route('tabs.inicio') }}', this)">
+            <a class="nav-item active" id="nav-inicio" onclick="loadTab('{{ route('tabs.inicio') }}', this)">
                 <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
                     <polyline points="9 22 9 12 15 12 15 22" />
@@ -71,7 +71,7 @@
             </a>
 
             <div class="nav-section-label">Herramientas</div>
-            <a class="nav-item active" id="nav-importar" onclick="loadTab('{{ route('import.index') }}', this)">
+            <a class="nav-item" id="nav-importar" onclick="loadTab('{{ route('import.index') }}', this)">
                 <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                     <polyline points="17 8 12 3 7 8" />

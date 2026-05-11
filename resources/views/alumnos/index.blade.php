@@ -4,7 +4,7 @@
     <div class="page-subtitle">Gestión de la base de datos de estudiantes</div>
   </div>
   
-  <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+  <div class="filters-container">
       <label for="filter-centro" style="font-size: 13px; color: var(--gray-600); font-weight: 500;">Plantel:</label>
       <select id="filter-centro" onchange="applyAlumnoFilters()" style="max-width: 200px; padding: 0.4rem 2rem 0.4rem 1rem; border: 1px solid var(--gray-200); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 13px; color: var(--blue-900); background-color: var(--white); cursor: pointer; outline: none; text-overflow: ellipsis;">
           <option value="">Todos los planteles</option>
