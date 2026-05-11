@@ -4,7 +4,7 @@
     <div class="page-subtitle">Listado oficial de planteles Telebachillerato</div>
   </div>
   
-  <div style="display: flex; gap: 0.5rem; align-items: center;">
+  <div class="filters-container">
       <label for="filter-municipio" style="font-size: 13px; color: var(--gray-600); font-weight: 500;">Filtrar por Municipio:</label>
       <select id="filter-municipio" onchange="applyFilters()" style="padding: 0.4rem 2rem 0.4rem 1rem; border: 1px solid var(--gray-200); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 13px; color: var(--blue-900); background-color: var(--white); cursor: pointer; outline: none;">
           <option value="">Todos los municipios</option>
@@ -17,16 +17,16 @@
 
 <script>
     function applyFilters() {
-        let municipio = document.getElementById('filter-municipio').value;
-        let search = document.getElementById('global-search') ? document.getElementById('global-search').value : '';
-        let url = '{{ route("centros.index") }}?search=' + encodeURIComponent(search) + '&municipio=' + encodeURIComponent(municipio) + '&ajax=1';
+        var municipio = document.getElementById('filter-municipio').value;
+        var search = document.getElementById('global-search') ? document.getElementById('global-search').value : '';
+        var url = '{{ route("centros.index") }}?search=' + encodeURIComponent(search) + '&municipio=' + encodeURIComponent(municipio) + '&ajax=1';
         loadTab(url);
     }
 
     // Configurar buscador global para el módulo Centros
     var topSearch = document.getElementById('top-search-container');
     if (topSearch) {
-        topSearch.style.display = 'flex';
+        topSearch.style.display = '';
         var searchInput = document.getElementById('global-search');
         if (searchInput) {
             searchInput.placeholder = 'Buscar por nombre, CCT, correo...';
@@ -35,12 +35,12 @@
     }
     
     // Configuramos la URL actual para que el buscador global mantenga el filtro
-    let currentMunicipio = '{{ $municipioFiltro }}';
+    var currentMunicipio = '{{ $municipioFiltro }}';
     window.currentModuleSearchUrl = '{{ route("centros.index") }}' + (currentMunicipio ? '?municipio=' + encodeURIComponent(currentMunicipio) : '');
 </script>
 
 <div class="card">
-    <div style="overflow-x: auto;">
+    <div class="table-responsive">
         <table>
             <thead>
                 <tr>

@@ -104,10 +104,10 @@
 
 <script>
     function applyCalificacionFilters() {
-        let search = document.getElementById('global-search') ? document.getElementById('global-search').value : '{{ $search }}';
-        let centro = document.getElementById('filter-centro').value;
+        var centro = document.getElementById('filter-centro').value;
+        var search = document.getElementById('global-search') ? document.getElementById('global-search').value : '';
         
-        let url = '{{ route("calificaciones.index") }}?search=' + encodeURIComponent(search);
+        var url = '{{ route("calificaciones.index") }}?search=' + encodeURIComponent(search);
         if (centro) url += '&centro=' + encodeURIComponent(centro);
         url += '&ajax=1';
         
@@ -122,7 +122,7 @@
     var topSearch = document.getElementById('top-search-container');
     var topSearchInput = document.getElementById('global-search');
     if (topSearch) {
-        topSearch.style.display = 'flex';
+        topSearch.style.display = '';
         if (topSearchInput) {
             topSearchInput.value = '{{ $search }}';
             topSearchInput.placeholder = 'Buscar alumno por matrícula o nombre...';

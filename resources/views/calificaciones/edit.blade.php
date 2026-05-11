@@ -43,19 +43,19 @@
                             <input type="number" step="0.1" min="0" max="10" class="grade-input p1" 
                                    value="{{ $calif ? $calif->parcial1 : '' }}" 
                                    oninput="calculateAverage(this)" 
-                                   style="width: 70px; text-align: center; padding: 0.4rem; border: 1px solid var(--gray-300); border-radius: var(--radius-sm); outline: none;">
+                                   style="width: 70px; text-align: center; padding: 0.4rem; border: 1px solid var(--gray-400); background-color: white; border-radius: var(--radius-sm); outline: none;">
                         </td>
                         <td style="text-align: center;">
                             <input type="number" step="0.1" min="0" max="10" class="grade-input p2" 
                                    value="{{ $calif ? $calif->parcial2 : '' }}" 
                                    oninput="calculateAverage(this)" 
-                                   style="width: 70px; text-align: center; padding: 0.4rem; border: 1px solid var(--gray-300); border-radius: var(--radius-sm); outline: none;">
+                                   style="width: 70px; text-align: center; padding: 0.4rem; border: 1px solid var(--gray-400); background-color: white; border-radius: var(--radius-sm); outline: none;">
                         </td>
                         <td style="text-align: center;">
                             <input type="number" step="0.1" min="0" max="10" class="grade-input p3" 
                                    value="{{ $calif ? $calif->parcial3 : '' }}" 
                                    oninput="calculateAverage(this)" 
-                                   style="width: 70px; text-align: center; padding: 0.4rem; border: 1px solid var(--gray-300); border-radius: var(--radius-sm); outline: none;">
+                                   style="width: 70px; text-align: center; padding: 0.4rem; border: 1px solid var(--gray-400); background-color: white; border-radius: var(--radius-sm); outline: none;">
                         </td>
                         <td style="text-align: center; vertical-align: middle;">
                             <div class="promedio-display" style="font-weight: 700; font-size: 16px; padding: 0.3rem 0.6rem; border-radius: 100px; display: inline-block; min-width: 60px;">
@@ -85,27 +85,27 @@
 
     // Inicializar colores de los promedios al cargar
     document.querySelectorAll('.materia-row').forEach(row => {
-        let display = row.querySelector('.promedio-display');
-        let val = parseFloat(display.innerText);
+        var display = row.querySelector('.promedio-display');
+        var val = parseFloat(display.innerText);
         updatePromedioColor(display, val);
     });
 
     function calculateAverage(inputElement) {
         // Validación de rango instantánea
         if (inputElement.value !== "") {
-            let val = parseFloat(inputElement.value);
+            var val = parseFloat(inputElement.value);
             if (val < 0) inputElement.value = 0;
             if (val > 10) inputElement.value = 10;
         }
 
-        const row = inputElement.closest('tr');
-        const p1 = parseFloat(row.querySelector('.p1').value);
-        const p2 = parseFloat(row.querySelector('.p2').value);
-        const p3 = parseFloat(row.querySelector('.p3').value);
-        const display = row.querySelector('.promedio-display');
+        var row = inputElement.closest('tr');
+        var p1 = parseFloat(row.querySelector('.p1').value);
+        var p2 = parseFloat(row.querySelector('.p2').value);
+        var p3 = parseFloat(row.querySelector('.p3').value);
+        var display = row.querySelector('.promedio-display');
 
-        let count = 0;
-        let sum = 0;
+        var count = 0;
+        var sum = 0;
 
         if (!isNaN(p1)) { sum += p1; count++; }
         if (!isNaN(p2)) { sum += p2; count++; }
@@ -115,7 +115,7 @@
             display.innerText = '--';
             updatePromedioColor(display, NaN);
         } else {
-            let promedio = sum / count;
+            var promedio = sum / count;
             // Para mostrar 2 decimales sin redondear hacia arriba falsamente en calificaciones limítrofes
             display.innerText = promedio.toFixed(2);
             updatePromedioColor(display, promedio);
@@ -135,26 +135,26 @@
     }
 
     function submitCalificaciones() {
-        const rows = document.querySelectorAll('.materia-row');
-        let payload = {};
-        let hasInvalidFields = false;
+        var rows = document.querySelectorAll('.materia-row');
+        var payload = {};
+        var hasInvalidFields = false;
 
         rows.forEach(row => {
-            const materiaId = row.getAttribute('data-id');
-            const p1 = row.querySelector('.p1');
-            const p2 = row.querySelector('.p2');
-            const p3 = row.querySelector('.p3');
+            var materiaId = row.getAttribute('data-id');
+            var p1 = row.querySelector('.p1');
+            var p2 = row.querySelector('.p2');
+            var p3 = row.querySelector('.p3');
             
             // Check HTML5 validity
             if (!p1.checkValidity() || !p2.checkValidity() || !p3.checkValidity()) {
                 hasInvalidFields = true;
             }
 
-            const p1Val = p1.value;
-            const p2Val = p2.value;
-            const p3Val = p3.value;
-            const promedioText = row.querySelector('.promedio-display').innerText;
-            const promedio = promedioText === '--' ? null : parseFloat(promedioText);
+            var p1Val = p1.value;
+            var p2Val = p2.value;
+            var p3Val = p3.value;
+            var promedioText = row.querySelector('.promedio-display').innerText;
+            var promedio = promedioText === '--' ? null : parseFloat(promedioText);
 
             // Solo enviar materias que tengan al menos una calificación ingresada, o enviar vacíos si se borraron
             payload[materiaId] = {
@@ -165,7 +165,7 @@
             };
         });
 
-        const alertBox = document.getElementById('form-alert');
+        var alertBox = document.getElementById('form-alert');
 
         if (hasInvalidFields) {
             alertBox.style.display = 'block';
@@ -177,7 +177,7 @@
             return;
         }
 
-        const btnSave = document.getElementById('btn-save-califs');
+        var btnSave = document.getElementById('btn-save-califs');
         btnSave.disabled = true;
         btnSave.innerHTML = 'Guardando...';
         alertBox.style.display = 'none';

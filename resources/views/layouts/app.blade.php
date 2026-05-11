@@ -35,6 +35,9 @@
             <input id="global-search" onkeypress="performGlobalSearch(event)" placeholder="Buscar...">
         </div>
         <div class="header-right">
+            <button class="mobile-search-toggle" onclick="document.querySelector('.header-search').classList.toggle('open')" style="background:none; border:none; color:white; display:none;">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </button>
             <span class="header-pill">Ciclo 2024–2</span>
             <div class="avatar">AD</div>
         </div>
@@ -105,6 +108,12 @@
         }
 
         function loadTab(url, element = null) {
+            // Cerrar menú lateral en móviles al hacer clic
+            let sidebar = document.querySelector('.sidebar');
+            if (sidebar.classList.contains('open')) {
+                sidebar.classList.remove('open');
+            }
+
             // Actualizar URL del navegador sin recargar la página
             if (url && !url.includes('ajax=1')) {
                 window.history.pushState({}, '', url);

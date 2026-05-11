@@ -33,12 +33,12 @@
 
 <script>
     function applyAlumnoFilters() {
-        let estatus = document.getElementById('filter-estatus').value;
-        let genero = document.getElementById('filter-genero').value;
-        let centro = document.getElementById('filter-centro').value;
-        let search = document.getElementById('global-search') ? document.getElementById('global-search').value : '';
+        var estatus = document.getElementById('filter-estatus').value;
+        var genero = document.getElementById('filter-genero').value;
+        var centro = document.getElementById('filter-centro').value;
+        var search = document.getElementById('global-search') ? document.getElementById('global-search').value : '';
         
-        let url = '{{ route("alumnos.index") }}?search=' + encodeURIComponent(search);
+        var url = '{{ route("alumnos.index") }}?search=' + encodeURIComponent(search);
         if (estatus) url += '&estatus=' + encodeURIComponent(estatus);
         if (genero) url += '&genero=' + encodeURIComponent(genero);
         if (centro) url += '&centro=' + encodeURIComponent(centro);
@@ -50,7 +50,7 @@
     // Configurar buscador global
     var topSearch = document.getElementById('top-search-container');
     if (topSearch) {
-        topSearch.style.display = 'flex';
+        topSearch.style.display = '';
         var searchInput = document.getElementById('global-search');
         if (searchInput) {
             searchInput.placeholder = 'Buscar por nombre, matrícula o plantel...';
@@ -59,10 +59,10 @@
     }
     
     // Configurar la URL actual del módulo para retener filtros
-    let currentEstatus = '{{ $estatusFiltro }}';
-    let currentGenero = '{{ $generoFiltro }}';
-    let currentCentro = '{{ $centroFiltro }}';
-    let baseUrl = '{{ route("alumnos.index") }}?';
+    var currentEstatus = '{{ $estatusFiltro }}';
+    var currentGenero = '{{ $generoFiltro }}';
+    var currentCentro = '{{ $centroFiltro }}';
+    var baseUrl = '{{ route("alumnos.index") }}?';
     if (currentEstatus) baseUrl += 'estatus=' + encodeURIComponent(currentEstatus) + '&';
     if (currentGenero) baseUrl += 'genero=' + encodeURIComponent(currentGenero) + '&';
     if (currentCentro) baseUrl += 'centro=' + encodeURIComponent(currentCentro) + '&';
