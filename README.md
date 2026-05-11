@@ -52,20 +52,20 @@ Sistema de gestión escolar desarrollado en Laravel enfocado en alto rendimiento
     ```
     *(Asegúrate de crear la base de datos vacía en tu gestor MySQL antes de continuar)*.
 
-5.  **Ejecutar Migraciones:**
-    Construye la estructura de la base de datos ejecutando las migraciones:
+5.  **Ejecutar Migraciones Básicas:**
+    Corre las migraciones base de Laravel (usuarios, sesiones, cache):
     ```bash
     php artisan migrate
     ```
 
-6.  **Poblar Datos Iniciales:**
-    Dependiendo de cómo esté configurado el proyecto, si existen *seeders* para los catálogos (como las materias), ejecútalos:
-    ```bash
-    php artisan db:seed
-    ```
-    *Nota: Para poblar los Centros y Alumnos, utiliza el Módulo de Importación CSV dentro de la propia aplicación web.*
+6.  **Construir Estructura de Datos (No-ORM):**
+    La estructura de las tablas maestras NO se encuentra en migraciones de Laravel. Se debe importar el archivo `database.sql` en tu gestor de base de datos para crear las tablas de `centros`, `alumnos`, `materias` y `calificaciones`.
 
-7.  **Levantar el Servidor de Desarrollo:**
+7.  **Poblar Datos Iniciales:**
+    El archivo `database.sql` que importaste en el paso anterior ya incluye las inserciones base para el catálogo de **Materias** (Matemáticas, Química, etc.). 
+    Para poblar los **Centros** y **Alumnos**, utiliza el Módulo de Importación CSV dentro de la propia aplicación web.
+
+8.  **Levantar el Servidor de Desarrollo:**
     ```bash
     php artisan serve
     ```
