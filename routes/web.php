@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CentroController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\CalificacionController;
+use App\Http\Controllers\ApiController;
 
 Route::get('/', [DashboardController::class, 'index'])->name('home');
 
@@ -25,4 +26,7 @@ Route::post('/alumnos/{id}', [AlumnoController::class, 'update'])->name('alumnos
 Route::get('/calificaciones', [CalificacionController::class, 'index'])->name('calificaciones.index');
 Route::get('/calificaciones/{id}', [CalificacionController::class, 'show'])->name('calificaciones.show');
 Route::post('/calificaciones/{id}', [CalificacionController::class, 'store'])->name('calificaciones.store');
+
+// Web Service API
+Route::get('/api/alumnos/{matricula}', [ApiController::class, 'getAlumno'])->name('api.alumnos.show');
 
