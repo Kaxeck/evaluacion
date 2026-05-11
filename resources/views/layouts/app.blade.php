@@ -27,12 +27,12 @@
                 <div class="logo-sub">Gestión escolar</div>
             </div>
         </div>
-        <div class="header-search">
+        <div class="header-search" id="top-search-container" style="display: none;">
             <svg width="14" height="14" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
                 <circle cx="11" cy="11" r="8" />
                 <path d="m21 21-4.35-4.35" />
             </svg>
-            <input placeholder="Buscar alumno, matrícula, centro…">
+            <input id="global-search" onkeypress="performGlobalSearch(event)" placeholder="Buscar...">
         </div>
         <div class="header-right">
             <span class="header-pill">Ciclo 2024–2</span>
@@ -89,6 +89,20 @@
     </div>
 
     <script>
+        window.currentModuleSearchUrl = null;
+
+        function performGlobalSearch(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                if (window.currentModuleSearchUrl) {
+                    let term = document.getElementById('global-search').value;
+                    let url = window.currentModuleSearchUrl;
+                    url += (url.includes('?') ? '&' : '?') + 'search=' + encodeURIComponent(term) + '&ajax=1';
+                    loadTab(url);
+                }
+            }
+        }
+
         function loadTab(url, element) {
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
             if (element) element.classList.add('active');

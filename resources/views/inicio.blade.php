@@ -6,6 +6,13 @@
   </div>
 </div>
 
+<script>
+    // En Inicio, ocultamos la barra de búsqueda global
+    var topSearch = document.getElementById('top-search-container');
+    if (topSearch) topSearch.style.display = 'none';
+    window.currentModuleSearchUrl = null;
+</script>
+
 <div class="stat-row">
   <div class="stat-card">
     <div class="stat-label">Centros registrados</div>

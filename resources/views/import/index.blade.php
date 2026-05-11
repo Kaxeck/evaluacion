@@ -9,6 +9,13 @@
       </div>
     </div>
 
+<script>
+    // En Importar, ocultamos la barra de búsqueda global
+    var topSearch = document.getElementById('top-search-container');
+    if (topSearch) topSearch.style.display = 'none';
+    window.currentModuleSearchUrl = null;
+</script>
+
 @if (session('success'))
     <div class="alert alert-success">
         {{ session('success') }}

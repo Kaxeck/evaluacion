@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CentroController;
 
 Route::get('/', function () {
     return view('inicio_container'); // Vista temporal para cargar layout + inicio
@@ -14,9 +15,8 @@ Route::get('/tabs/inicio', [DashboardController::class, 'index'])->name('tabs.in
 Route::get('/importar', [ImportController::class, 'index'])->name('import.index');
 Route::post('/importar', [ImportController::class, 'store'])->name('import.store');
 
-// Rutas (placeholders por ahora)
-Route::get('/centros', function () {
-    return 'Modulo Centros'; })->name('centros.index');
+// Rutas
+Route::get('/centros', [CentroController::class, 'index'])->name('centros.index');
 Route::get('/alumnos', function () {
     return 'Modulo Alumnos'; })->name('alumnos.index');
 Route::get('/calificaciones', function () {
