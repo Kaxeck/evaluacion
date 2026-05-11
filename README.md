@@ -13,6 +13,15 @@ Sistema de gestión escolar desarrollado en Laravel enfocado en alto rendimiento
 *   **Arquitectura No-ORM:** Cero uso de Eloquent para consultas de datos, utilizando exclusivamente el Facade `DB` y sentencias preparadas para un máximo rendimiento y prevención de inyecciones SQL.
 *   **UI Dinámica:** Navegación "Zero-Reload" mediante API Fetch.
 
+## 📱 Aplicación Móvil & Web Service
+
+El sistema expone un **Web Service / API RESTful** en la ruta `/api/alumnos/{matricula}` que retorna un JSON estructurado y anidado con la información completa de la escuela, el perfil del alumno y sus calificaciones.
+
+En conjunto con esto, se desarrolló una **App Móvil Nativa en Flutter** que consume dicha API. La aplicación:
+* Réplica la estética y la paleta de colores del portal web.
+* Muestra de forma dinámica los promedios y desglose de parciales con manejo de estados visuales.
+* Está lista para compilarse en APK y conectarse a la base de datos en tiempo real.
+
 ## Requisitos Previos
 
 *   PHP >= 8.1
