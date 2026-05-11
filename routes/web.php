@@ -16,7 +16,11 @@ Route::post('/importar', [ImportController::class, 'store'])->name('import.store
 
 // Rutas
 Route::get('/centros', [CentroController::class, 'index'])->name('centros.index');
+Route::get('/centros/{id}', [CentroController::class, 'show'])->name('centros.show');
+
 Route::get('/alumnos', [AlumnoController::class, 'index'])->name('alumnos.index');
+Route::get('/alumnos/{id}/edit', [AlumnoController::class, 'edit'])->name('alumnos.edit');
+Route::post('/alumnos/{id}', [AlumnoController::class, 'update'])->name('alumnos.update');
 Route::get('/calificaciones', function () {
     return 'Modulo Calificaciones'; })->name('calificaciones.index');
 

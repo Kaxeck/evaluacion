@@ -67,4 +67,15 @@ class CentroController extends Controller
         // Si la abren directo por URL, la envolvemos en el layout
         return view('centros.container', $data);
     }
+
+    public function show(Request $request, $id)
+    {
+        $centro = DB::select('SELECT * FROM centros WHERE id = ? LIMIT 1', [$id]);
+        
+        if (empty($centro)) {
+            return response('Centro no encontrado', 404);
+        }
+
+        return view('centros.show', ['centro' => $centro[0]]);
+    }
 }

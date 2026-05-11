@@ -99,4 +99,52 @@ class AlumnoController extends Controller
 
         return view('alumnos.container', $data);
     }
+
+    public function edit(Request $request, $id)
+    {
+        $alumno = DB::select('SELECT * FROM alumnos WHERE id = ? LIMIT 1', [$id]);
+        
+        if (empty($alumno)) {
+            return response('Alumno no encontrado', 404);
+        }
+
+        $centros = DB::select('SELECT id, clave, nombre FROM centros ORDER BY nombre ASC');
+
+        return view('alumnos.edit', [
+            'alumno' => $alumno[0],
+            'centros' => $centros
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $nombre = $request->input('nombre');
+            $paterno = $request->input('paterno', '');
+            $materno = $request->input('materno', '');
+            $genero = $request->input('genero');
+            $estatus = $request->input('estatus');
+            $centro_id = $request->input('centro_id');
+
+            // Actualización por SQL puro
+            $affected = DB::update('
+                UPDATE alumnos 
+                SET nombre = ?, paterno = ?, materno = ?, genero = ?, estatus = ?, centro_id = ? 
+                WHERE id = ?
+            ', [
+                $nombre, $paterno, $materno, $genero, $estatus, $centro_id, $id
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Los datos del alumno se actualizaron correctamente.'
+            ]);
+            
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error al guardar los datos: ' . $e->getMessage()
+            ], 500);
+        }
+    }
 }

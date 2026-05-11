@@ -79,6 +79,7 @@
                     <th>Plantel (Centro)</th>
                     <th>Género</th>
                     <th>Estatus</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -99,10 +100,15 @@
                             <span class="td-badge badge-inactive">Inactivo</span>
                         @endif
                     </td>
+                    <td>
+                        <button onclick="loadTab('{{ route('alumnos.edit', $alumno->id) }}')" class="btn" style="background: white; border: 1px solid var(--gray-200); color: var(--blue-600); padding: 0.3rem 0.6rem; border-radius: var(--radius-sm); font-size: 13px; font-weight: 500; cursor: pointer;">
+                            Editar
+                        </button>
+                    </td>
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="5" style="text-align: center; padding: 3rem; color: var(--gray-400);">
+                    <td colspan="6" style="text-align: center; padding: 3rem; color: var(--gray-400);">
                         No se encontraron alumnos con los filtros seleccionados.
                     </td>
                 </tr>
